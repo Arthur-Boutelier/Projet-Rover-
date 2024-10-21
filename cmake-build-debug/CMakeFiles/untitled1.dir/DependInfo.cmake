@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/arthu/CLionProjects/Rover/list.c" "CMakeFiles/untitled1.dir/list.c.obj" "gcc" "CMakeFiles/untitled1.dir/list.c.obj.d"
   "C:/Users/arthu/CLionProjects/Rover/loc.c" "CMakeFiles/untitled1.dir/loc.c.obj" "gcc" "CMakeFiles/untitled1.dir/loc.c.obj.d"
   "C:/Users/arthu/CLionProjects/Rover/main.c" "CMakeFiles/untitled1.dir/main.c.obj" "gcc" "CMakeFiles/untitled1.dir/main.c.obj.d"
   "C:/Users/arthu/CLionProjects/Rover/map.c" "CMakeFiles/untitled1.dir/map.c.obj" "gcc" "CMakeFiles/untitled1.dir/map.c.obj.d"
