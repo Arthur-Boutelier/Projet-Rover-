@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void insert_node(t_list* list,  int value, char* action){
-    t_node_tree* new_node = create_node_list(val, action);
+    t_node_tree* new_node = create_node_list(value, action);
     if (list->head == NULL)
         list->head = new_node;
     else{
@@ -12,5 +12,6 @@ void insert_node(t_list* list,  int value, char* action){
         current->next = new_node;
     }
 }
+
 
 
