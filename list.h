@@ -9,7 +9,8 @@ typedef struct s_node_tree{
 
 typedef struct s_list{
     t_node_tree* head;
-}t_list;
+}t_list_tree;
 
-t_node_tree* create_node();
+t_node_tree* create_node(int val, char* action);
+
 #endif //UNTITLED1_LIST_H
