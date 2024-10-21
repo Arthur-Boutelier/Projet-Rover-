@@ -2,7 +2,7 @@
 #ifndef UNTITLED1_LIST_H
 #define UNTITLED1_LIST_H
 typedef struct s_node_tree{
-    t_node_n_aire* node;
+    t_node_n_aire* value;
     struct s_node_tree* next;
 } t_node_tree;
 
