@@ -76,6 +76,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/arthu/CLionProjects/Rover/list.c">
+			<Option target="untitled1"/>
+		</Unit>
+		<Unit filename="C:/Users/arthu/CLionProjects/Rover/list.h">
+			<Option target="untitled1"/>
+		</Unit>
 		<Unit filename="C:/Users/arthu/CLionProjects/Rover/loc.c">
 			<Option target="untitled1"/>
 		</Unit>
