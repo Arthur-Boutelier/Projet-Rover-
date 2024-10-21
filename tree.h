@@ -8,8 +8,7 @@
 typedef struct s_node_n_aire{
     int value;
     char* action;
-    int n_fils;
-    struct s_node_n_aire** tab_fils;
+
 
 } t_node_n_aire;
 
