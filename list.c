@@ -1,5 +1,16 @@
 #include "list.h"
+#include <stdlib.h>
 
-t_node_tree* create_node(){
-    t_node_tree * new_node
+void insert_node(t_list* list,  int value, char* action){
+    t_node_tree* new_node = create_node_list(val, action);
+    if (list->head == NULL)
+        list->head = new_node;
+    else{
+        t_node_tree* current = list->head;
+        while (current->next != NULL)
+            current = current->next;
+        current->next = new_node;
+    }
 }
+
+
