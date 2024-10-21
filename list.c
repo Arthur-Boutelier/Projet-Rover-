@@ -15,3 +15,6 @@ void insert_node(t_list* list,  int value, char* action){
 
 
 
+
+
+
