@@ -2,22 +2,22 @@
 #include <stdlib.h>
 
 
-t_node_tree* create_node_list(int val, char* action){
-    t_node_tree * new_node = (t_node_tree*) malloc(sizeof(t_node_tree));
-    new_node->next = NULL;
-    new_node->value = create_node_n_aire(val, action)
-    return new_node;
+t_cell_tree* create_cell(int val, char* action){
+    t_cell_tree * new_cell = (t_cell_tree*) malloc(sizeof(t_cell_tree));
+    new_cell->next = NULL;
+    new_cell-> value = create_node_n_aire(val, action);
+    return new_cell;
 }
 
-void insert_node(t_list* list,  int value, char* action){
-    t_node_tree* new_node = create_node_list(value, action);
+void insert_cell(t_list_tree * list,  int value, char* action){
+    t_cell_tree* new_cell = create_cell(value, action);
     if (list->head == NULL)
-        list->head = new_node;
+        list->head = new_cell;
     else{
-        t_node_tree* current = list->head;
+        t_cell_tree* current = list->head;
         while (current->next != NULL)
             current = current->next;
-        current->next = new_node;
+        current->next = new_cell;
     }
 }
 
