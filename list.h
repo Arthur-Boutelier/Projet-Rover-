@@ -1,9 +1,10 @@
-#include "tree.h"
 #ifndef UNTITLED1_LIST_H
 #define UNTITLED1_LIST_H
+#include "tree.h"
+
 typedef struct s_cell_tree{
-t_node_n_aire* value;
-struct s_cell_tree* next;
+    t_node_n_aire* value;
+    struct s_cell_tree* next;
 } t_cell_tree;
 
 typedef struct s_list{
