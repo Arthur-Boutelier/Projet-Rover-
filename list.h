@@ -2,7 +2,6 @@
 #define UNTITLED1_LIST_H
 #include "tree.h"
 
-
 typedef struct s_cell_son{
     t_node* curr_node;
     struct s_cell_son * next;
