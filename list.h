@@ -35,4 +35,6 @@ void addHead_cell_son(t_list_son *list, t_node* val);
 t_list_move* create_empty_list_move();
 t_list_son* create_empty_list_son();
 
+t_list_move* removeVal_move(t_list_move *list, t_move val);
+
 #endif //UNTITLED1_LIST_H

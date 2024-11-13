@@ -58,3 +58,20 @@ t_list_son* create_empty_list_son()
 
     return new_list;
 }
+
+t_list_move* removeVal_move(t_list_move *list, t_move val) {
+    t_list_move *new_list = create_empty_list_move();
+    t_cell_move *current = list->head;
+    int task_done = 0;
+    while (current != NULL) {
+        if (task_done)
+            addHead_cell_move(new_list, current->value);
+        else if (current->value != val)
+            addHead_cell_move(new_list, current->value);
+        else
+            task_done = 1;
+        current = current->next;
+    }
+
+    return new_list;
+}
