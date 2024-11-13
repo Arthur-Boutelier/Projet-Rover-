@@ -9,6 +9,7 @@ typedef struct s_cell_move
 {
     t_move value;
     struct s_cell_move * next;
+    struct s_cell_move *head;
 } t_cell_move;
 
 typedef struct s_list_move{
@@ -24,5 +25,14 @@ typedef struct s_list_son
 {
     t_cell_son* head;
 }t_list_son;
+
+t_cell_move *create_cell_move(t_move val);
+t_cell_son *create_cell_son(t_node* val);
+
+void addHead_cell_move(t_list_move *list, t_move val);
+void addHead_cell_son(t_list_son *list, t_node* val);
+
+t_list_move* create_empty_list_move();
+t_list_son* create_empty_list_son();
 
 #endif //UNTITLED1_LIST_H
