@@ -34,10 +34,36 @@ t_tree* creating_tree(t_list_move * available_move, int depht, t_localisation in
     creating_tree_node(tree->root, depht);
     return tree;
 }
-/*
+
 t_list_move * find_optimal_move(t_localisation loc, t_list_move * available_move, t_map map){
-    tab_move_opti =
-    int min =
+    t_move tab_move_opti[10];
+    int logical_size = 0;
+    int min = 100000;
+    t_cell_move * curr = available_move -> head;
+    while (curr != NULL){
+        t_localisation new_loc = move(loc, curr->value);
+        if (min == map.costs[new_loc.pos.x][new_loc.pos.y]){
+            int occ = 0;
+            for (int i = 0; i < logical_size; i++){
+                if (curr->value == tab_move_opti[i])
+                    occ ++;
+            }
+            if (occ == 0){
+                tab_move_opti[logical_size] = curr->value;
+                logical_size++;
+            }
+            min = map.costs[new_loc.pos.x][new_loc.pos.y];
+        }
+        else if(min > map.costs[new_loc.pos.x][new_loc.pos.y]){
+            tab_move_opti[0] = curr->value;
+            logical_size = 1;
+        }
+        curr = curr->next;
+    }
+    t_list_move * opti_move = create_empty_list_move();
+    for (int i = 0; i<logical_size; i++)
+        addHead_cell_move(opti_move, tab_move_opti);
+    return opti_move;
 }
 /*void creating_tree_node(t_node * node, int depht);
  */
