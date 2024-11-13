@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "tree.h"
+#include "list.h"
+#include "moves.h"
+
 
 t_tree * create_empty_tree(){
     t_tree * new_tree = (t_tree *) malloc(sizeof(t_tree));
@@ -21,7 +24,6 @@ void fill_node(t_node * node, int value, t_move move, t_list_move available_move
     node->loc = loc;
     node->son = NULL;
 }
-
 /*
 void creating_tree(t_tree * tree, t_list_move * available_move, int depht, t_position initial_position){
     t_node * root = create_empty_node();
