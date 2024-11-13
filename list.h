@@ -1,7 +1,9 @@
 #ifndef UNTITLED1_LIST_H
 #define UNTITLED1_LIST_H
-#include "tree.h"
 #include "moves.h"
+
+struct s_node;
+typedef struct s_node t_node;
 
 typedef struct s_cell_move
 {
