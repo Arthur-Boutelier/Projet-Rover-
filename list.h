@@ -47,9 +47,9 @@ typedef struct s_list_freemove{
     t_cell_freemove * head;
 }t_list_freemove;
 
-t_cell_freemove *create_cell_freemove(t_move val);
+t_cell_freemove *create_cell_freemove(t_move val,int nb);
 
-void addHead_cell_freemove(t_list_freemove *list, t_move val);
+void addHead_cell_freemove(t_list_freemove *list, t_move val, int nb);
 
 t_list_freemove* create_empty_list_freemove();
 
