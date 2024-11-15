@@ -71,3 +71,8 @@ void creating_tree_node(t_node * node, int depth){
 
     }
 }
+#define min(a,b) ((a)>(b)?(a):(b))
+
+t_list_move* find_shortest_patch(t_tree* tree){
+
+}
