@@ -151,5 +151,20 @@ t_localisation move(t_localisation loc, t_move move)
 void updateLocalisation(t_localisation *p_loc, t_move m)
 {
     *p_loc = move(*p_loc, m);
-    return;
+}
+
+t_move update_move_soil(t_move move, t_soil soil){
+    switch (soil) {
+        case PLAIN:
+            return move;
+            break;
+        case ERG:
+            break;
+        case REG:
+            break;
+        case CREVASSE:
+            break;
+        default:
+            break;
+    }
 }

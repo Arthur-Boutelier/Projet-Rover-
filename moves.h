@@ -4,7 +4,7 @@
 
 #ifndef UNTITLED1_MOVES_H
 #define UNTITLED1_MOVES_H
-
+#include "map.h"
 #include "loc.h"
 
 /**
@@ -49,5 +49,7 @@ t_localisation move(t_localisation, t_move);
  * @return none
  */
 void updateLocalisation(t_localisation *, t_move);
+
+t_move update_move_soil(t_move move, t_soil soil);
 
 #endif //UNTITLED1_MOVES_H
