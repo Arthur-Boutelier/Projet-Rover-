@@ -5,7 +5,6 @@
 
 
 
-
 t_list_freemove* create_t_list_init();
 
 t_list_move* set_list_move(t_list_freemove* list)

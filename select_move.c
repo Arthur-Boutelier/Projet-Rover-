@@ -12,6 +12,7 @@ int num_random_time()
 }
 
 
+
 t_list_freemove* create_t_list_init()
 {
   t_list_freemove* list_init = create_empty_list_freemove();
