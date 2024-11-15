@@ -50,7 +50,7 @@ t_list_move* create_empty_list_move()
 
 t_list_son* create_empty_list_son()
 {
-    t_list_son *new_list = malloc(sizeof(t_list_son));
+    t_list_son *new_list = (t_list_son*)malloc(sizeof(t_list_son));
     new_list->head = NULL;
 
     return new_list;
