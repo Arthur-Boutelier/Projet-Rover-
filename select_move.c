@@ -4,14 +4,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 int num_random_time()
 {
   srand(time(NULL));
   return rand();
 }
-
-
 
 t_list_freemove* create_t_list_init()
 {
@@ -37,6 +34,7 @@ t_list_move* set_list_move(t_list_freemove* list){
       current = current->next;
     }
     addHead_cell_move(list_move, current->value);
+    current->numberofmoveleft = current->numberofmoveleft - 1;
   }
   return list_move;
 }
