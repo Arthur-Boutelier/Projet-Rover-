@@ -1,5 +1,6 @@
 #include "select_move.h"
 #include "list.h"
+#include "moves.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -37,4 +38,16 @@ t_list_move* set_list_move(t_list_freemove* list){
     current->numberofmoveleft = current->numberofmoveleft - 1;
   }
   return list_move;
+}
+
+
+
+void affichage_t_list_freemove(t_list_freemove* list){
+  t_cell_freemove* current = list->head;
+  while(current->next != NULL){
+    printf("%d \n", current->numberofmoveleft);
+    printf("%s \n", getMoveAsString(current->value));
+    printf("\n");
+    current = current->next;
+  }
 }
