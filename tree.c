@@ -40,25 +40,27 @@ t_list_move * find_optimal_move(t_localisation loc, t_list_move * available_move
     int logical_size = 0;
     int min = 100000;
     t_cell_move * curr = available_move -> head;
-    while (curr != NULL){
-        t_localisation new_loc = move(loc, curr->value);
-        if (min == map.costs[new_loc.pos.x][new_loc.pos.y]){
-            int occ = 0;
-            for (int i = 0; i < logical_size; i++){
-                if (curr->value == tab_move_opti[i])
-                    occ ++;
+    while (curr != NULL) {
+        t_move true_move = update_move_soil(curr->value, map.soils[loc.pos.y][loc.pos.x]);
+        t_localisation new_loc = move(loc, true_move);
+        if (isValidLocalisation(new_loc.pos, map.x_max, map.y_max)) {
+            if (min == map.costs[new_loc.pos.y][new_loc.pos.x]) {
+                int occ = 0;
+                for (int i = 0; i < logical_size; i++) {
+                    if (curr->value == tab_move_opti[i])
+                        occ++;
+                }
+                if (occ == 0) {
+                    tab_move_opti[logical_size] = curr->value;
+                    logical_size++;
+                }
+            } else if (min > map.costs[new_loc.pos.y][new_loc.pos.x]) {
+                tab_move_opti[0] = curr->value;
+                logical_size = 1;
+                min = map.soils[new_loc.pos.y][new_loc.pos.x];
             }
-            if (occ == 0){
-                tab_move_opti[logical_size] = curr->value;
-                logical_size++;
-            }
-            min = map.costs[new_loc.pos.x][new_loc.pos.y];
+            curr = curr->next;
         }
-        else if(min > map.costs[new_loc.pos.x][new_loc.pos.y]){
-            tab_move_opti[0] = curr->value;
-            logical_size = 1;
-        }
-        curr = curr->next;
     }
     t_list_move * opti_move = create_empty_list_move();
     for (int i = 0; i<logical_size; i++)
@@ -66,8 +68,26 @@ t_list_move * find_optimal_move(t_localisation loc, t_list_move * available_move
     return opti_move;
 }
 
+t_node * create_node_son(t_node * curr_node, t_localisation new_loc, t_list_move * new_list_move, t_move * curr_move){
+    t_node * new_node = create_empty_node();
+    new_node->loc = new_loc;
+    new_node->available_move = new_list_move;
+    new_node->map = curr_node->map;
+    new_node->move = curr_move;
+    new_node->value = new_node->map.costs[new_loc.pos.y][new_loc.pos.x];
+    return new_node;
+}
+
 void creating_tree_node(t_node * node, int depth){
     if (depth > 0){
-
+        t_list_move * optimal_move = find_optimal_move(node->loc, node->available_move, node->map);
+        t_cell_move * curr = optimal_move->head;
+        while (curr != NULL){
+            t_list_move * new_available_move = removeVal_move(node->available_move, curr->value);
+            t_localisation new_loc = move(node->loc, curr->value);
+            t_node* new_node = create_node_son(node, new_loc, new_available_move, &curr->value);
+            addHead_cell_son(node->son, new_node);
+            creating_tree_node(node, depth--);
+        }
     }
 }

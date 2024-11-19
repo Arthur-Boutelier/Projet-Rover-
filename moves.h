@@ -24,7 +24,8 @@ typedef enum e_move
     B_10, // Backward 10 m
     T_LEFT, // Turn left (+90°)
     T_RIGHT, // Turn right (-90°)
-    U_TURN
+    U_TURN,
+    STILL
 } t_move;
 
 /**
@@ -51,5 +52,6 @@ t_localisation move(t_localisation, t_move);
 void updateLocalisation(t_localisation *, t_move);
 
 t_move update_move_soil(t_move move, t_soil soil);
+
 
 #endif //UNTITLED1_MOVES_H
