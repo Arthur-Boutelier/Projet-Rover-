@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "map.h"
-
+#include "select_move.h"
 int main() {
-    t_map map
+    t_map map;
     // The following preprocessor directive checks if the code is being compiled on a Windows system.
     // If either _WIN32 or _WIN64 is defined, it means we are on a Windows platform.
     // On Windows, file paths use backslashes (\), hence we use the appropriate file path for Windows.
@@ -30,5 +30,9 @@ int main() {
         printf("\n");
     }
     displayMap(map);
+    t_list_freemove* liste_freemove = create_t_list_init();
+    t_list_move* liste_move = set_list_move(liste_freemove);
+    affichage_t_list_freemove(liste_freemove);
+    affichage_t_list_move(liste_move);
     return 0;
 }
