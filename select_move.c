@@ -59,3 +59,7 @@ void affichage_t_list_move(t_list_move* list){
     current = current->next;
   }
 }
+t_list_freemove* liste_freemove = create_empty_list_move();
+t_list_move* liste_move = set_list_move(liste_freemove);
+affichage_t_list_freemove(liste_freemove);
+affichage_t_list_move(liste_move);
