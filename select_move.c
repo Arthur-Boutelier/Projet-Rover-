@@ -51,3 +51,11 @@ void affichage_t_list_freemove(t_list_freemove* list){
     current = current->next;
   }
 }
+
+void affichage_t_list_move(t_list_move* list){
+  t_cell_move* current = list->head;
+  while(current->next != NULL){
+    printf("%s \n", getMoveAsString(current->value));
+    current = current->next;
+  }
+}
