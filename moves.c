@@ -154,17 +154,25 @@ void updateLocalisation(t_localisation *p_loc, t_move m)
 }
 
 t_move update_move_soil(t_move move, t_soil soil){
-    switch (soil) {
-        case PLAIN:
-            return move;
-            break;
-        case ERG:
-            break;
-        case REG:
-            break;
-        case CREVASSE:
-            break;
-        default:
-            break;
+    if (soil == ERG){
+        switch (move) {
+            case U_TURN:
+                return T_LEFT;
+                break;
+            case F_10:
+                return STILL;
+                break;
+            case F_20:
+                return F_10;
+                break;
+            case F_30:
+                return F_20;
+                break;
+            default:
+                return STILL;
+                break;
+        }
     }
+    else
+        return move;
 }
