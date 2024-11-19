@@ -43,7 +43,7 @@ t_list_move * find_optimal_move(t_localisation loc, t_list_move * available_move
     while (curr != NULL) {
         t_move true_move = update_move_soil(curr->value, map.soils[loc.pos.y][loc.pos.x]);
         t_localisation new_loc = move(loc, true_move);
-        if (isValidLocalisation(new_loc), map.y_max, map.x_max) {
+        if (isValidLocalisation(new_loc.pos, map.x_max, map.y_max)) {
             if (min == map.costs[new_loc.pos.y][new_loc.pos.x]) {
                 int occ = 0;
                 for (int i = 0; i < logical_size; i++) {
