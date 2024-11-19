@@ -71,18 +71,17 @@ t_list_move* removeVal_move(t_list_move *list, t_move val) {
     return new_list;
 }
 
-t_cell_freemove *create_cell_freemove(t_move val){
+t_cell_freemove *create_cell_freemove(t_move val, int nb){
     t_cell_freemove *new_cell = (t_cell_freemove*)malloc(sizeof(t_cell_freemove));
-
+    new_cell->numberofmoveleft = nb;
     new_cell->value = val;
-    new_cell->numberofmoveleft = 0;
     new_cell->next = NULL;
 
     return new_cell;
 }
 
-void addHead_cell_freemove(t_list_freemove *list, t_move val){
-    t_cell_freemove *new_cell = create_cell_freemove(val);
+void addHead_cell_freemove(t_list_freemove *list, t_move val, int nb){
+    t_cell_freemove *new_cell = create_cell_freemove(val, nb);
 
     new_cell->next = list->head;
     list->head = new_cell;
@@ -91,6 +90,5 @@ void addHead_cell_freemove(t_list_freemove *list, t_move val){
 t_list_freemove* create_empty_list_freemove(){
     t_list_freemove *new_list = (t_list_freemove*)malloc(sizeof(t_list_freemove));
     new_list->head = NULL;
-
     return new_list;
 }

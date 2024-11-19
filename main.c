@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "map.h"
+#include "select_move.h"
 #include "tree.h"
 
 int main() {
@@ -31,6 +32,12 @@ int main() {
         printf("\n");
     }
     displayMap(map);
+    
+    t_list_freemove* liste_freemove = create_t_list_init();
+    t_list_move* liste_move = set_list_move(liste_freemove);
+    affichage_t_list_freemove(liste_freemove);
+    affichage_t_list_move(liste_move);
     t_tree * tree = creating_tree();
+
     return 0;
 }
