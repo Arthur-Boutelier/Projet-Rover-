@@ -2,7 +2,7 @@
 #include "map.h"
 
 int main() {
-    t_map map
+    t_map map;
     // The following preprocessor directive checks if the code is being compiled on a Windows system.
     // If either _WIN32 or _WIN64 is defined, it means we are on a Windows platform.
     // On Windows, file paths use backslashes (\), hence we use the appropriate file path for Windows.
