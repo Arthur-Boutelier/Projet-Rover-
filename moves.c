@@ -165,6 +165,7 @@ t_move update_move_soil(t_move move, t_soil soil){
         case CREVASSE:
             break;
         default:
+
             break;
     }
 }

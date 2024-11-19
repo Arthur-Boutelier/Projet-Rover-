@@ -52,14 +52,10 @@ void affichage_t_list_freemove(t_list_freemove* list){
   }
 }
 
-void affichage_t_list_move(t_list_move* list){
-  t_cell_move* current = list->head;
-  while(current->next != NULL){
-    printf("%s \n", getMoveAsString(current->value));
-    current = current->next;
-  }
+void affichage_t_list_move(t_list_move* list) {
+    t_cell_move *current = list->head;
+    while (current->next != NULL) {
+        printf("%s \n", getMoveAsString(current->value));
+        current = current->next;
+    }
 }
-t_list_freemove* liste_freemove = create_empty_list_move();
-t_list_move* liste_move = set_list_move(liste_freemove);
-affichage_t_list_freemove(liste_freemove);
-affichage_t_list_move(liste_move);
