@@ -54,5 +54,7 @@ t_map createMapFromFile(char *);
  * @param map : the map to display
  */
 void displayMap(t_map);
+int** create_empty_matrix(int rows, int cols);
+void free_matrix(int** matrix, int rows);
 
 #endif //UNTITLED1_MAP_H

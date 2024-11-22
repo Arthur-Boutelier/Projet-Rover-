@@ -301,3 +301,26 @@ void displayMap(t_map map)
     }
     return;
 }
+
+
+int** create_empty_matrix(int rows, int cols) {
+
+    int** matrix = (int**)malloc(rows * sizeof(int*));
+    for (int i = 0; i < rows; i++) {
+        matrix[i] = (int*)malloc(cols * sizeof(int));
+    }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            matrix[i][j] = 0;
+        }
+    }
+
+    return matrix;
+}
+
+void free_matrix(int** matrix, int rows) {
+    for (int i = 0; i < rows; i++) {
+        free(matrix[i]);
+    }
+    free(matrix);
+}
