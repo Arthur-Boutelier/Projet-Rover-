@@ -2,6 +2,7 @@
 #include "map.h"
 #include "select_move.h"
 #include "tree.h"
+#include "random.h"
 
 int main() {
     t_map map;
@@ -38,6 +39,5 @@ int main() {
     affichage_t_list_freemove(liste_freemove);
     affichage_t_list_move(liste_move);
     t_tree * tree = creating_tree();
-
     return 0;
 }

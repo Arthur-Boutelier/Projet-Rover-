@@ -2,14 +2,8 @@
 #include "list.h"
 #include "moves.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "random.h"
 
-int num_random_time()
-{
-  srand(time(NULL));
-  return rand();
-}
 
 t_list_freemove* create_t_list_init()
 {
@@ -54,7 +48,6 @@ void affichage_t_list_freemove(t_list_freemove* list){
 
 void affichage_t_list_move(t_list_move* list) {
     t_cell_move *current = list->head;
-    printf("passage");
     while (current->next != NULL) {
         printf("%s \n", getMoveAsString(current->value));
         current = current->next;
