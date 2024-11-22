@@ -3,6 +3,8 @@
 #include "select_move.h"
 #include "tree.h"
 #include "random.h"
+#include <fcntl.h>
+#include <unistd.h>
 
 int main() {
     t_map map;
@@ -38,6 +40,19 @@ int main() {
     t_list_move* liste_move = set_list_move(liste_freemove);
     affichage_t_list_freemove(liste_freemove);
     affichage_t_list_move(liste_move);
-    t_tree * tree = creating_tree();
+    //t_tree * tree = creating_tree();
+    int* liste_gngngn = create_list_random(13,7 );
+    for(int i = 0; i < 91; i++){
+        printf("%d\n",liste_gngngn[i]);
+    }
+    int** matrix = fill_matrix(13, 7, liste_gngngn);
+    add_base_station(matrix, 13, 7);
+    for (int i = 0; i < 13; i++) {
+        for (int j = 0; j < 7; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
     return 0;
+
 }
