@@ -2,14 +2,8 @@
 #include "list.h"
 #include "moves.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "random.h"
 
-int num_random_time()
-{
-  srand(time(NULL));
-  return rand();
-}
 
 t_list_freemove* create_t_list_init()
 {

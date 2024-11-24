@@ -3,6 +3,7 @@
 #include "select_move.h"
 #include "tree.h"
 #include "loc.h"
+#include "random.h"
 
 int main() {
     t_map example_map, actual_map, training_map;
@@ -58,5 +59,6 @@ int main() {
     t_node * min_node = find_min_node_tree(*tree);
     t_list_move* liste_reco_move = recover_move_node(min_node);
     affichage_t_list_move(liste_reco_move);
+
     return 0;
 }
