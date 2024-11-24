@@ -80,4 +80,5 @@ t_position UP(t_position);
  */
 t_position DOWN(t_position);
 
+t_localisation loc_creation();
 #endif //UNTITLED1_LOC_H

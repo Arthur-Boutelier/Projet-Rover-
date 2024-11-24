@@ -3,7 +3,9 @@
 //
 
 #include "loc.h"
+t_localisation loc_creation(){
 
+}
 t_localisation loc_init(int x, int y, t_orientation ori)
 {
     t_localisation loc;

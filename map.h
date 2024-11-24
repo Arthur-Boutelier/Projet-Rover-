@@ -54,5 +54,7 @@ t_map createMapFromFile(char *);
  * @param map : the map to display
  */
 void displayMap(t_map);
+void display_cost(t_map map);
+void display_soil(t_map map);
 
 #endif //UNTITLED1_MAP_H

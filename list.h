@@ -53,5 +53,9 @@ void addHead_cell_freemove(t_list_freemove *list, t_move val, int nb);
 
 t_list_freemove* create_empty_list_freemove();
 
+void affichage_t_list_freemove(t_list_freemove* list);
+void affichage_t_list_move(t_list_move* list);
+void del_list_son(t_list_son * list_son);
+void del_list_move(t_list_move * list_move);
 
 #endif //UNTITLED1_LIST_H
