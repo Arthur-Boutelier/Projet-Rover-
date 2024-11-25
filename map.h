@@ -42,11 +42,10 @@ typedef struct s_map
  * @param filename : the name of the file
  * @return the map
  */
-t_map createMapFromFile(char *);
+t_map createMapFromFile(char *filename);
 
 /**
  * @brief Function to create a standard training map (11x11 with only plains and base station in the middle)
- * @param none
  * @return a standard map
  */
  t_map createTrainingMap();
@@ -55,45 +54,45 @@ t_map createMapFromFile(char *);
  * @brief display the map with characters
  * @param map : the map to display
  */
-void displayMap(t_map);
+void displayMap(t_map map);
 
 /**
  * @brief Fonction qui pose la base station sur une map donné
- * @param t_map map : map où il faut rajouter la base station
+ * @param map : map où il faut rajouter la base station
  */
 void add_base_station(t_map* map);
 
 /**
  * @brief fonction qui créer une nouvelle map à partir de la taille de la matrice souhaité
- * @param int x : taille x de la matrice
- * @param int y : taille y de la matrice
+ * @param x : taille x de la matrice
+ * @param y : taille y de la matrice
  * @return t_map map avec les coefficients qui correponds aux différentes case.
  */
 t_map create_random_Map(int x,int y);
 
 /**
  * @brief affiche la map des couts
- * @param t_map map : la map à afficher
+ * @param map : la map à afficher
  */
 void display_cost(t_map map);
 
 /**
  * @brief affiche la map des coefficients
- * @param t_map map : la map à afficher
+ * @param map : la map à afficher
  */
 void display_soil(t_map map);
 
 /**
  * @brief fonction qui vérifie si le robot est arrivé à la base station ou non
- * @param t_localitation loc : localistation du robot
- * @param t_map map : map où se trouve la base station
+ * @param loc : localistation du robot
+ * @param map : map où se trouve la base station
  * @return 1 si le robot est arrivé à la base station, 0 sinon
  */
 int robot_in_base(t_localisation loc, t_map map);
 
 /**
  * @brief fonction qui vérifie si le robot est passé par une case reg pendant la phase
- * @param t_node* final_node : noeuds final
+ * @param final_node : noeuds final
  * @return 1 si le robot est passé par une case reg, 0 sinon
  */
 int passed_by_reg(t_node* final_node);

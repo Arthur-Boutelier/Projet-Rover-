@@ -48,17 +48,17 @@ void updateLocalisation(t_localisation *, t_move);
 
 /**
  * @brief fonction qui en fonction du terrain renvoie le mouvements qu'il faut effecteur
- * @param t_move move : mouvements à faire
- * @param t_soil soil : sol
+ * @param move : mouvements à faire
+ * @param soil : sol
  * @return t_move, mouvement qu'il faut effectuer
  */
 t_move update_move_soil(t_move move, t_soil soil);
 
 /**
  * @brief fonction qui vérifie si on est pas sur une crevasse
- * @param t_move curr_move : mouvements en train d'être effectuer
- * @param t_map map, map sur laquelle on se trouve
- * @param t_localisation loc : localistation du robot
+ * @param curr_move : mouvements en train d'être effectuer
+ * @param map, map sur laquelle on se trouve
+ * @param loc : localistation du robot
  * @return 1 si après le mouvement on est sur une crevasse ou 0 sinon
  */
 int not_passing_crevasse(t_move curr_move, t_map map, t_localisation loc);
