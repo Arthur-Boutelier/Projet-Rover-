@@ -45,7 +45,7 @@ int main() {
                 phase = 0;
                 move_by_phase = 5;
                 move_since_beg = create_empty_list_move();
-                loc = random_position_orientation(actual_map.x_max, actual_map.y_max);
+                loc = random_position_orientation(actual_map);
                 while (robot_in_base(loc, actual_map) == 0){
                     liste_move = set_list_move(create_t_list_init(), nb_move);
                     tree = creating_tree(liste_move, move_by_phase, loc, actual_map);
@@ -58,10 +58,11 @@ int main() {
                     loc = min_node->loc;
                     phase ++;
                 }
-                printf("déplacement finaux après %d phase:\n", phase);
+                printf("deplacement finaux apres %d phase:\n", phase);
                 affichage_t_list_move(move_since_beg);
                 del_list_move(move_since_beg);
                 del_list_move(move_phase);
+                printf("a");
                 del_tree(tree);
                 break;
             case 2:

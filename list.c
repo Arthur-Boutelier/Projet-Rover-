@@ -1,7 +1,6 @@
-#include "list.h"
-#include "tree.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "list.h"
 
 t_cell_move *create_cell_move(t_move val)
 {
@@ -138,4 +137,16 @@ void del_list_move(t_list_move * list_move){
         curr = next;
     }
     free(list_move);
+}
+
+void concatenate_list_move(t_list_move * list_1, t_list_move * list_2){
+    t_cell_move * curr = list_1->head;
+    if (curr == NULL){
+        list_1->head = list_2->head;
+    } else {
+        while (curr->next != NULL)
+            curr = curr->next;
+        curr->next = list_2->head;
+        list_2->head = NULL;
+    }
 }

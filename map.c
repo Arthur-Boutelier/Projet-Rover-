@@ -3,6 +3,7 @@
 #include <string.h>
 #include "map.h"
 #include "tree.h"
+#include "random.h"
 
 /* prototypes of local functions */
 /* local functions are used only in this file, as helper functions */
@@ -329,10 +330,11 @@ t_map create_random_Map(int x,int y)
     return map;
 }
 
-void add_base_station(t_map* map){
-    int pos_x = ((num_random_time()%65)*6735)%(map->x_max);
-    int pos_y = ((num_random_time()%87)*9713)%map->y_max;
+void add_base_station(t_map* map) {
+    int pos_x = ((num_random_time() % 65) * 6735) % (map->x_max);
+    int pos_y = ((num_random_time() % 87) * 9713) % map->y_max;
     map->soils[pos_y][pos_x] = 0;
+}
 
 void display_cost(t_map map){
     for (int i = 0; i < map.y_max; i++)
