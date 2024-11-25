@@ -2,10 +2,10 @@
 #ifndef RANDOM_H
 #define RANDOM_H
 #include "loc.h"
-
+#include "map.h"
 
 int num_random_time();
-t_localisation random_position_orientation(int taille_m_x, int taille_m_y);
+t_localisation random_position_orientation(t_map map);
 
 
 
