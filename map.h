@@ -84,12 +84,18 @@ void display_cost(t_map map);
 void display_soil(t_map map);
 
 /**
- * @brief fonction qui créer une nouvelle map à partir de la taille de la matrice souhaité
- * @param int x : taille x de la matrice
- * @param int y : taille y de la matrice
- * @return t_map map avec les coefficients qui correponds aux différentes case.
+ * @brief fonction qui vérifie si le robot est arrivé à la base station ou non
+ * @param t_localitation loc : localistation du robot
+ * @param t_map map : map où se trouve la base station
+ * @return 1 si le robot est arrivé à la base station, 0 sinon
  */
 int robot_in_base(t_localisation loc, t_map map);
+
+/**
+ * @brief fonction qui vérifie si le robot est passé par une case reg pendant la phase
+ * @param t_node* final_node : noeuds final
+ * @return 1 si le robot est passé par une case reg, 0 sinon
+ */
 int passed_by_reg(t_node* final_node);
 
 #endif //UNTITLED1_MAP_H
