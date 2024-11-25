@@ -20,6 +20,7 @@ int random_i_j(int i, int j)
     return rand();
 }
 
+
 t_localisation random_position_orientation(t_map map){
     int pos_x = ((num_random_time()%29)*348)%map.x_max;
     int pos_y = ((num_random_time()%37)*427)%map.y_max;
