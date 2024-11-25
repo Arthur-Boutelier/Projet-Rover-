@@ -6,6 +6,7 @@
 #include "random.h"
 #include "select_move.h"
 
+
 int main() {
     t_map example_map, actual_map, training_map;
     int running = 1;
@@ -80,6 +81,6 @@ int main() {
         }
 
     }
-
     return 0;
+
 }
