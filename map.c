@@ -1,13 +1,8 @@
-//
-// Created by flasque on 19/10/2024.
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "map.h"
-#include "loc.h"
-#include "queue.h"
+#include "tree.h"
 
 /* prototypes of local functions */
 /* local functions are used only in this file, as helper functions */
@@ -322,4 +317,18 @@ void display_soil(t_map map){
         }
         printf("\n");
     }
+}
+
+int robot_in_base(t_localisation loc, t_map map){
+    return map.soils[loc.pos.y][loc.pos.x] == 0;
+}
+
+int passed_by_reg(t_node * final_node){
+    t_node * curr = final_node;
+    while (curr != NULL){
+        if(curr->map.soils[curr->loc.pos.y][curr->loc.pos.x] == REG)
+            return 1;
+        curr = curr->parent;
+    }
+    return 0;
 }

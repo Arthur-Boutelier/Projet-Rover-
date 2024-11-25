@@ -1,14 +1,16 @@
-//
-// Created by flasque on 19/10/2024.
-//
-
 #ifndef UNTITLED1_MAP_H
 #define UNTITLED1_MAP_H
+#include "loc.h"
+#include "queue.h"
 
 #define COST_UNDEF 65535
 /**
  * @brief Enum for the possible soils of the map
  */
+
+struct s_node;
+typedef struct s_node t_node;
+
 typedef enum e_soil
 {
     BASE_STATION,
@@ -56,5 +58,6 @@ t_map createMapFromFile(char *);
 void displayMap(t_map);
 void display_cost(t_map map);
 void display_soil(t_map map);
-
+int robot_in_base(t_localisation loc, t_map map);
+int passed_by_reg(t_node* final_node);
 #endif //UNTITLED1_MAP_H

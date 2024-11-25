@@ -1,12 +1,7 @@
-//
-// Created by flasque on 19/10/2024.
-//
-
 #ifndef UNTITLED1_MOVES_H
 #define UNTITLED1_MOVES_H
-#include "map.h"
 #include "loc.h"
-
+#include "map.h"
 /**
  * @brief Array of strings for the possible moves of the robot
  */

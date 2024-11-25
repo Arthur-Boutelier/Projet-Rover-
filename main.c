@@ -1,14 +1,19 @@
 #include <stdio.h>
 #include "map.h"
-#include "select_move.h"
-#include "tree.h"
+#include "list.h"
 #include "loc.h"
+#include "tree.h"
 #include "random.h"
+#include "select_move.h"
 
 int main() {
     t_map example_map, actual_map, training_map;
-    int running = 0;
-    int choice;
+    int running = 1;
+    int choice, nb_move, phase, move_by_phase;
+    t_list_move * liste_move, * move_since_beg, * move_phase;
+    t_localisation loc;
+    t_tree * tree;
+    t_node * min_node;
     // The following preprocessor directive checks if the code is being compiled on a Windows system.
     // If either _WIN32 or _WIN64 is defined, it means we are on a Windows platform.
     // On Windows, file paths use backslashes (\), hence we use the appropriate file path for Windows.
@@ -34,6 +39,29 @@ int main() {
         } while (choice > 6 || choice < 0);
         switch (choice) {
             case 1:
+                printf("Combien de  mouvement possible par phase ?\n");
+                scanf(" %d", &nb_move);
+                phase = 0;
+                move_by_phase = 5;
+                move_since_beg = create_empty_list_move();
+                loc = random_position_orientation(actual_map.x_max, actual_map.y_max);
+                while (robot_in_base(loc, actual_map) == 0){
+                    liste_move = set_list_move(create_t_list_init(), nb_move);
+                    tree = creating_tree(liste_move, move_by_phase, loc, actual_map);
+                    min_node = find_min_node_tree(*tree);
+                    move_phase = recover_move_node(min_node);
+                    move_by_phase = 5;
+                    if (passed_by_reg(min_node))
+                        move_by_phase = 4;
+                    concatenate_list_move(move_since_beg, move_phase);
+                    loc = min_node->loc;
+                    phase ++;
+                }
+                printf("déplacement finaux après %d phase:\n", phase);
+                affichage_t_list_move(move_since_beg);
+                del_list_move(move_since_beg);
+                del_list_move(move_phase);
+                del_tree(tree);
                 break;
             case 2:
                 break;
@@ -52,13 +80,6 @@ int main() {
         }
 
     }
-    t_localisation initial_pos = loc_init(5,0, 3);
-    t_list_freemove* liste_freemove = create_t_list_init();
-    t_list_move* liste_move = set_list_move(liste_freemove, 15);
-    t_tree * tree = creating_tree(liste_move, 5, initial_pos, actual_map);
-    t_node * min_node = find_min_node_tree(*tree);
-    t_list_move* liste_reco_move = recover_move_node(min_node);
-    affichage_t_list_move(liste_reco_move);
 
     return 0;
 }

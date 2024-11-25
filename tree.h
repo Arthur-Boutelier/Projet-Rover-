@@ -1,9 +1,9 @@
 
 #ifndef UNTITLED1_TREE_H
 #define UNTITLED1_TREE_H
-#include "loc.h"
-#include "list.h"
 #include "moves.h"
+#include "list.h"
+#include "loc.h"
 #include "map.h"
 
 
@@ -33,5 +33,5 @@ t_node * find_min_node_tree(t_tree tree);
 t_node * find_min_node(t_node * node);
 t_list_move * recover_move_node(t_node * node);
 int depth_node(t_node* node);
-
+void del_tree(t_tree* tree);
 #endif //UNTITLED1_TREE_H
