@@ -1,8 +1,5 @@
 #include "select_move.h"
-#include "list.h"
-#include "moves.h"
 #include <stdio.h>
-#include "random.h"
 
 
 t_list_freemove* create_t_list_init()

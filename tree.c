@@ -1,8 +1,5 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "tree.h"
-#include "list.h"
-#include "moves.h"
 
 
 t_tree * create_empty_tree(){
