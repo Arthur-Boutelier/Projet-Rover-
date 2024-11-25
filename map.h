@@ -69,11 +69,26 @@ void add_base_station(t_map* map);
  * @param int y : taille y de la matrice
  * @return t_map map avec les coefficients qui correponds aux différentes case.
  */
-
-
 t_map create_random_Map(int x,int y);
+
+/**
+ * @brief affiche la map des couts
+ * @param t_map map : la map à afficher
+ */
 void display_cost(t_map map);
+
+/**
+ * @brief affiche la map des coefficients
+ * @param t_map map : la map à afficher
+ */
 void display_soil(t_map map);
+
+/**
+ * @brief fonction qui créer une nouvelle map à partir de la taille de la matrice souhaité
+ * @param int x : taille x de la matrice
+ * @param int y : taille y de la matrice
+ * @return t_map map avec les coefficients qui correponds aux différentes case.
+ */
 int robot_in_base(t_localisation loc, t_map map);
 int passed_by_reg(t_node* final_node);
 
