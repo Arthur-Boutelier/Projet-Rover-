@@ -1,8 +1,5 @@
 #include "select_move.h"
-#include "list.h"
-#include "moves.h"
 #include <stdio.h>
-#include "random.h"
 
 
 t_list_freemove* create_t_list_init()
@@ -18,10 +15,10 @@ t_list_freemove* create_t_list_init()
   return list_init;
 }
 
-t_list_move* set_list_move(t_list_freemove* list){
+t_list_move* set_list_move(t_list_freemove* list, int nb){
   t_list_move* list_move = create_empty_list_move();
   t_cell_freemove* current;
-  for (int i=0; i<9; i++){
+  for (int i=0; i<nb; i++){
     int number_random = num_random_time()%(100-i)+1;
     current = list->head;
     while(current->numberofmoveleft < number_random){
@@ -32,24 +29,4 @@ t_list_move* set_list_move(t_list_freemove* list){
     current->numberofmoveleft = current->numberofmoveleft - 1;
   }
   return list_move;
-}
-
-
-
-void affichage_t_list_freemove(t_list_freemove* list){
-  t_cell_freemove* current = list->head;
-  while(current->next != NULL){
-    printf("%d \n", current->numberofmoveleft);
-    printf("%s \n", getMoveAsString(current->value));
-    printf("\n");
-    current = current->next;
-  }
-}
-
-void affichage_t_list_move(t_list_move* list) {
-    t_cell_move *current = list->head;
-    while (current->next != NULL) {
-        printf("%s \n", getMoveAsString(current->value));
-        current = current->next;
-    }
 }

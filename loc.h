@@ -1,7 +1,3 @@
-//
-// Created by flasque on 19/10/2024.
-//
-
 #ifndef UNTITLED1_LOC_H
 #define UNTITLED1_LOC_H
 
@@ -80,4 +76,5 @@ t_position UP(t_position);
  */
 t_position DOWN(t_position);
 
+t_localisation loc_creation();
 #endif //UNTITLED1_LOC_H

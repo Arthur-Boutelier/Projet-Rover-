@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include "random.h"
 #include <time.h>
-#include "loc.h"
-#include "map.h"
 
 int num_random_time()
 {

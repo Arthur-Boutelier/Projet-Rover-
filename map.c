@@ -1,14 +1,8 @@
-//
-// Created by flasque on 19/10/2024.
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "map.h"
-#include "loc.h"
-#include "queue.h"
-#include "random.h"
+#include "tree.h"
 
 /* prototypes of local functions */
 /* local functions are used only in this file, as helper functions */
@@ -303,30 +297,6 @@ void displayMap(t_map map)
     return;
 }
 
-
-int** create_empty_matrix(int rows, int cols) {
-
-    int** matrix = (int**)malloc(rows * sizeof(int*));
-    for (int i = 0; i < rows; i++) {
-        matrix[i] = (int*)malloc(cols * sizeof(int));
-    }
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            matrix[i][j] = 0;
-        }
-    }
-
-    return matrix;
-}
-
-void free_matrix(int** matrix, int rows) {
-    for (int i = 0; i < rows; i++) {
-        free(matrix[i]);
-    }
-    free(matrix);
-}
-
-
 t_map create_random_Map(int x,int y)
 {
     int list_probabilite[10] = {1,1,1,1,1,2,2,3,3,4};
@@ -363,4 +333,39 @@ void add_base_station(t_map* map){
     int pos_x = ((num_random_time()%65)*6735)%(map->x_max);
     int pos_y = ((num_random_time()%87)*9713)%map->y_max;
     map->soils[pos_y][pos_x] = 0;
+
+void display_cost(t_map map){
+    for (int i = 0; i < map.y_max; i++)
+    {
+        for (int j = 0; j < map.x_max; j++)
+        {
+            printf("%-5d ", map.costs[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void display_soil(t_map map){
+    for (int i = 0; i < map.y_max; i++)
+    {
+        for (int j = 0; j < map.x_max; j++)
+        {
+            printf("%d ", map.soils[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int robot_in_base(t_localisation loc, t_map map){
+    return map.soils[loc.pos.y][loc.pos.x] == 0;
+}
+
+int passed_by_reg(t_node * final_node){
+    t_node * curr = final_node;
+    while (curr != NULL){
+        if(curr->map.soils[curr->loc.pos.y][curr->loc.pos.x] == REG)
+            return 1;
+        curr = curr->parent;
+    }
+    return 0;
 }

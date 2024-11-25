@@ -1,12 +1,7 @@
-//
-// Created by flasque on 19/10/2024.
-//
-
 #ifndef UNTITLED1_MOVES_H
 #define UNTITLED1_MOVES_H
-#include "map.h"
 #include "loc.h"
-
+#include "map.h"
 /**
  * @brief Array of strings for the possible moves of the robot
  */
@@ -50,8 +45,7 @@ t_localisation move(t_localisation, t_move);
  * @return none
  */
 void updateLocalisation(t_localisation *, t_move);
-
 t_move update_move_soil(t_move move, t_soil soil);
-
+int not_passing_crevasse(t_move curr_move, t_map map, t_localisation loc);
 
 #endif //UNTITLED1_MOVES_H

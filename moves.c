@@ -1,8 +1,6 @@
-//
-// Created by flasque on 19/10/2024.
-//
-
+#include <stdlib.h>
 #include "moves.h"
+#include "list.h"
 
 /* prototypes of local functions */
 /* local functions are used only in this file, as helper functions */
@@ -27,7 +25,7 @@ t_localisation translate(t_localisation , t_move);
 
 t_orientation rotate(t_orientation ori, t_move move)
 {
-    int rst;
+    int rst = 0;
     switch (move)
     {
         case T_LEFT:
@@ -142,9 +140,8 @@ char *getMoveAsString(t_move move)
 
 t_localisation move(t_localisation loc, t_move move)
 {
-    t_localisation new_loc;
+    t_localisation new_loc = translate(loc, move);
     new_loc.ori = rotate(loc.ori, move);
-    new_loc = translate(loc, move);
     return new_loc;
 }
 
@@ -158,21 +155,41 @@ t_move update_move_soil(t_move move, t_soil soil){
         switch (move) {
             case U_TURN:
                 return T_LEFT;
-                break;
             case F_10:
                 return STILL;
-                break;
             case F_20:
                 return F_10;
-                break;
             case F_30:
                 return F_20;
-                break;
             default:
                 return STILL;
-                break;
         }
     }
     else
         return move;
+}
+
+t_list_move * intermediate_move(t_move move){
+    t_list_move * inter_move = create_empty_list_move();
+    if (move > F_20)
+        addHead_cell_move(inter_move, F_20);
+    addHead_cell_move(inter_move, F_10);
+    return inter_move;
+}
+
+int not_passing_crevasse(t_move curr_move, t_map map, t_localisation loc){
+    if(curr_move == F_20 || curr_move == F_30){
+        t_list_move * inter_move = intermediate_move(curr_move);
+        t_cell_move * curr = inter_move->head;
+        while (curr != NULL){
+            t_localisation new_loc = move(loc, curr->value);
+            if (isValidLocalisation(new_loc.pos, map.x_max, map.y_max)){
+                if (map.soils[new_loc.pos.y][new_loc.pos.x] == CREVASSE) {
+                    return 0;
+                }
+            }
+            curr = curr->next;
+        }
+    }
+    return 1;
 }
