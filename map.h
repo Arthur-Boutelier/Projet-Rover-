@@ -69,6 +69,8 @@ void add_base_station(t_map* map);
  * @param int y : taille y de la matrice
  * @return t_map map avec les coefficients qui correponds aux différentes case.
  */
+
+
 t_map create_random_Map(int x,int y);
 void display_cost(t_map map);
 void display_soil(t_map map);
