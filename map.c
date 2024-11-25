@@ -8,6 +8,7 @@
 #include "map.h"
 #include "loc.h"
 #include "queue.h"
+#include "random.h"
 
 /* prototypes of local functions */
 /* local functions are used only in this file, as helper functions */
@@ -323,4 +324,43 @@ void free_matrix(int** matrix, int rows) {
         free(matrix[i]);
     }
     free(matrix);
+}
+
+
+t_map create_random_Map(int x,int y)
+{
+    int list_probabilite[10] = {1,1,1,1,1,2,2,3,3,4};
+    t_map map;
+    map.x_max = x;
+    map.y_max = y;
+    map.soils = (t_soil **)malloc(y * sizeof(t_soil *));
+    for (int i = 0; i < y; i++)
+    {
+        map.soils[i] = (t_soil *)malloc(x * sizeof(t_soil));
+    }
+    map.costs = (int **)malloc(y * sizeof(int *));
+    for (int i = 0; i < y; i++)
+    {
+        map.costs[i] = (int *)malloc(x * sizeof(int));
+    }
+    for (int i = 0; i < y; i++)
+    {
+
+       for (int j = 0; j < x; j++)
+        {
+            int value;
+            map.soils[i][j] = list_probabilite[random_i_j(i,j)%10];
+        }
+
+    }
+    add_base_station(&map);
+    calculateCosts(map);
+    removeFalseCrevasses(map);
+    return map;
+}
+
+void add_base_station(t_map* map){
+    int pos_x = ((num_random_time()%65)*6735)%(map->x_max);
+    int pos_y = ((num_random_time()%87)*9713)%map->y_max;
+    map->soils[pos_y][pos_x] = 0;
 }
