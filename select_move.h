@@ -10,12 +10,13 @@
  */
 t_list_freemove* create_t_list_init();
 
+
 /**
  * @brief fonction qui choisis les mouvements aléatoirement en fonction de la liste avec les probabilitées
  * @param t_list_freemove* list : liste des proba associées aux mouvements
  * @param int nb : nombre de mouvements désirés
  * @return t_list_move* list avec les mouvements choisis
  */
-t_list_move* set_list_move(t_list_freemove* list, int nb);
+t_list_move* set_list_move(t_list_freemove* list, int nb, int phase);
 
 #endif //UNTITLED1_SELECT_MOVE_H

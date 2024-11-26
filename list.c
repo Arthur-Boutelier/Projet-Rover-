@@ -111,7 +111,8 @@ void affichage_t_list_freemove(t_list_freemove* list){
 void affichage_t_list_move(t_list_move* list) {
     t_cell_move *current = list->head;
     while (current != NULL) {
-        printf("%s \n", getMoveAsString(current->value));
+        if(current->value != STILL)
+            printf("%s \n", getMoveAsString(current->value));
         current = current->next;
     }
 }
@@ -129,14 +130,16 @@ void del_list_son(t_list_son * list_son){
 
 
 void del_list_move(t_list_move * list_move){
-    t_cell_move * curr = list_move->head;
-    t_cell_move * next;
-    while(curr != NULL){
-        next = curr->next;
-        free(curr);
-        curr = next;
+    if (list_move != NULL) {
+        t_cell_move *curr = list_move->head;
+        t_cell_move *next;
+        while (curr != NULL) {
+            next = curr->next;
+            free(curr);
+            curr = next;
+        }
+        free(list_move);
     }
-    free(list_move);
 }
 
 void concatenate_list_move(t_list_move * list_1, t_list_move * list_2){
