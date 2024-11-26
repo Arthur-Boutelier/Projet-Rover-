@@ -15,11 +15,11 @@ t_list_freemove* create_t_list_init()
   return list_init;
 }
 
-t_list_move* set_list_move(t_list_freemove* list, int nb){
+t_list_move* set_list_move(t_list_freemove* list, int nb, int phase){
   t_list_move* list_move = create_empty_list_move();
   t_cell_freemove* current;
   for (int i=0; i<nb; i++){
-    int number_random = num_random_time()%(100-i)+1;
+    int number_random = random_i_j(i + (phase+4)*5, (i+48)*2)%(100-i)+1;
     current = list->head;
     while(current->numberofmoveleft < number_random){
         number_random = number_random - current->numberofmoveleft;

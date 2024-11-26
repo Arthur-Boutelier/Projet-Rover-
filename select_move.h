@@ -5,6 +5,6 @@
 #include "moves.h"
 
 t_list_freemove* create_t_list_init();
-t_list_move* set_list_move(t_list_freemove* list, int nb);
+t_list_move* set_list_move(t_list_freemove* list, int nb, int phase);
 
 #endif //UNTITLED1_SELECT_MOVE_H

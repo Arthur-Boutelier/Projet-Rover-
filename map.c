@@ -183,65 +183,10 @@ void calculateCosts(t_map map)
             enqueue(&queue, dp);
         }
     }
-
-
     return;
 }
 /* definition of exported functions */
 
-t_map createMapFromFile(char *filename)
-{
-    /* rules for the file :
-     * - the first line contains the number of lines : y dimension (int)
-     * - the second line contains the number of columns : x dimension (int)
-     * - the next lines contain the map values (int) separated by spaces : one line = one row
-     * - the values are the following : 0 = BASE_STATION, 1 = PLAIN, 2 = ERG, 3 = REG, 4 = CREVASSE
-     */
-
-    t_map map;
-    int xdim, ydim;     // dimensions of the map
-    char buffer[100];   // buffer for reading the file line by line
-
-    FILE *file = fopen(filename,"rt");
-    if (file == NULL)
-    {
-        fprintf(stderr, "Error: cannot open file %s\n", filename);
-        exit(1);
-    }
-    fscanf(file, "%d", &ydim);
-    fscanf(file, "%d", &xdim);
-    map.x_max = xdim;
-    map.y_max = ydim;
-    map.soils = (t_soil **)malloc(ydim * sizeof(t_soil *));
-    for (int i = 0; i < ydim; i++)
-    {
-        map.soils[i] = (t_soil *)malloc(xdim * sizeof(t_soil));
-    }
-    map.costs = (int **)malloc(ydim * sizeof(int *));
-    for (int i = 0; i < ydim; i++)
-    {
-        map.costs[i] = (int *)malloc(xdim * sizeof(int));
-    }
-    for (int i = 0; i < ydim; i++)
-    {
-
-        // parse the line to get the values : 0 = BASE_STATION, 1 = PLAIN, 2 = ERG, 3 = REG, 4 = CREVASSE
-        // values are separated by spaces, so we use sscanf with %d to get the values
-        for (int j = 0; j < xdim; j++)
-        {
-            int value;
-            fscanf(file, "%d", &value);
-            map.soils[i][j] = value;
-            // cost is 0 for BASE_STATION, 65535 for other soils
-            map.costs[i][j] = (value == BASE_STATION) ? 0 : COST_UNDEF;
-        }
-
-    }
-    fclose(file);
-    calculateCosts(map);
-    removeFalseCrevasses(map);
-    return map;
-}
 
 t_map createTrainingMap()
 {
@@ -297,6 +242,59 @@ void displayMap(t_map map)
     }
     return;
 }
+t_map createMapFromFile(char *filename)
+{
+    /* rules for the file :
+     * - the first line contains the number of lines : y dimension (int)
+     * - the second line contains the number of columns : x dimension (int)
+     * - the next lines contain the map values (int) separated by spaces : one line = one row
+     * - the values are the following : 0 = BASE_STATION, 1 = PLAIN, 2 = ERG, 3 = REG, 4 = CREVASSE
+     */
+
+    t_map map;
+    int xdim, ydim;     // dimensions of the map
+    char buffer[100];   // buffer for reading the file line by line
+
+    FILE *file = fopen(filename,"rt");
+    if (file == NULL)
+    {
+        fprintf(stderr, "Error: cannot open file %s\n", filename);
+        exit(1);
+    }
+    fscanf(file, "%d", &ydim);
+    fscanf(file, "%d", &xdim);
+    map.x_max = xdim;
+    map.y_max = ydim;
+    map.soils = (t_soil **)malloc(ydim * sizeof(t_soil *));
+    for (int i = 0; i < ydim; i++)
+    {
+        map.soils[i] = (t_soil *)malloc(xdim * sizeof(t_soil));
+    }
+    map.costs = (int **)malloc(ydim * sizeof(int *));
+    for (int i = 0; i < ydim; i++)
+    {
+        map.costs[i] = (int *)malloc(xdim * sizeof(int));
+    }
+    for (int i = 0; i < ydim; i++)
+    {
+
+        // parse the line to get the values : 0 = BASE_STATION, 1 = PLAIN, 2 = ERG, 3 = REG, 4 = CREVASSE
+        // values are separated by spaces, so we use sscanf with %d to get the values
+        for (int j = 0; j < xdim; j++)
+        {
+            int value;
+            fscanf(file, "%d", &value);
+            map.soils[i][j] = value;
+            // cost is 0 for BASE_STATION, 65535 for other soils
+            map.costs[i][j] = (value == BASE_STATION) ? 0 : COST_UNDEF;
+        }
+
+    }
+    fclose(file);
+    calculateCosts(map);
+    removeFalseCrevasses(map);
+    return map;
+}
 
 t_map create_random_Map(int x,int y)
 {
@@ -319,8 +317,8 @@ t_map create_random_Map(int x,int y)
 
        for (int j = 0; j < x; j++)
         {
-            int value;
             map.soils[i][j] = list_probabilite[random_i_j(i,j)%10];
+            map.costs[i][j] = COST_UNDEF;
         }
 
     }
@@ -331,9 +329,10 @@ t_map create_random_Map(int x,int y)
 }
 
 void add_base_station(t_map* map) {
-    int pos_x = ((num_random_time() % 65) * 6735) % (map->x_max);
-    int pos_y = ((num_random_time() % 87) * 9713) % map->y_max;
+    int pos_x = random_i_j(45*num_random_time(), 87*num_random_time()) % map->x_max;
+    int pos_y = random_i_j(pos_x, num_random_time()) % map->y_max;
     map->soils[pos_y][pos_x] = 0;
+    map->costs[pos_y][pos_x] = 0;
 }
 
 void display_cost(t_map map){
