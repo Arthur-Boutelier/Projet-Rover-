@@ -1,12 +1,7 @@
-//
-// Created by flasque on 19/10/2024.
-//
-
 #ifndef UNTITLED1_MOVES_H
 #define UNTITLED1_MOVES_H
-#include "map.h"
 #include "loc.h"
-
+#include "map.h"
 /**
  * @brief Array of strings for the possible moves of the robot
  */
@@ -24,7 +19,8 @@ typedef enum e_move
     B_10, // Backward 10 m
     T_LEFT, // Turn left (+90°)
     T_RIGHT, // Turn right (-90°)
-    U_TURN
+    U_TURN,
+    STILL
 } t_move;
 
 /**
@@ -50,6 +46,21 @@ t_localisation move(t_localisation, t_move);
  */
 void updateLocalisation(t_localisation *, t_move);
 
+/**
+ * @brief fonction qui en fonction du terrain renvoie le mouvements qu'il faut effecteur
+ * @param move : mouvements à faire
+ * @param soil : sol
+ * @return t_move, mouvement qu'il faut effectuer
+ */
 t_move update_move_soil(t_move move, t_soil soil);
+
+/**
+ * @brief fonction qui vérifie si on est pas sur une crevasse
+ * @param curr_move : mouvements en train d'être effectuer
+ * @param map, map sur laquelle on se trouve
+ * @param loc : localistation du robot
+ * @return 1 si après le mouvement on est sur une crevasse ou 0 sinon
+ */
+int not_passing_crevasse(t_move curr_move, t_map map, t_localisation loc);
 
 #endif //UNTITLED1_MOVES_H
