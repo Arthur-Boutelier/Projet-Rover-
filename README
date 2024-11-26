@@ -1,0 +1,34 @@
+Projet Rover
+
+Membres de l'équipe:
+- PROFFIT Victor
+- BOUTELIER Arthur
+- TONNEAU Benjamin
+
+Lien vers le dépôt Git:
+https://github.com/Arthur-Boutelier/Rover
+
+Projet Description:
+L'objectif de ce projet est de simuler la navigation d'un robot sur une carte avec différents types de sols. Le robot peut effectuer divers mouvements et l'application calcule les coûts associés à ces mouvements en fonction du type de sol.
+
+Dates clés:
+Semaine du 21 au 25 Octobre : séance de suivi #1
+Semaine du 11 au 17 novembre : séance de suivi #2 et rendu intermédiaire
+Semaine du 25 au 29 novembre : soutenance de projet
+
+Fonctionnalités:
+-Création d'un arbre N-aire
+-Choix du 'meilleur' parcours pour la phase
+-Mise à jour de la localisation de MARC après une phase
+-Test d'arrivée sur la station de base
+-Test de sortie de la carte
+-Gestion de passage sur une crevasse
+-Utilisation d'un fichier de carte quelconque
+-Tirage au hasard de mouvements pour une phase
+-Prise en compte des types de terrain pour les mouvements
+
+Soumission de projet:
+- La livraison finale s'effectue sur Moodle sous la forme d'un .zip
+- Code du projet avec tous les fichiers .h et .c.
+- Fichier README.txt répertoriant les programmes et les instructions d'utilisation.
+
