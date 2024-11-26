@@ -119,6 +119,7 @@ t_node * find_min_node(t_node * node){
         }
         curr = curr->next;
     }
+
     return min_node;
 }
 
