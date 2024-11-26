@@ -3,18 +3,14 @@ project(untitled1 C)
 set(CMAKE_C_STANDARD 11)
 add_executable(untitled1
         main.c
-        loc.c
-        loc.h
-        moves.c
-        moves.h
-        map.c
-        map.h
-        queue.c
-        queue.h
-        stack.c
-        stack.h
-        tree.c
-        tree.h
-        list.h
+        counter.c
         list.c
+        loc.c
+        map.c
+        moves.c
+        queue.c
+        random.c
+        select_move.c
+        stack.c
+        tree.c
 )

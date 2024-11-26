@@ -17,7 +17,7 @@ Semaine du 11 au 17 novembre : séance de suivi #2 et rendu intermédiaire
 Semaine du 25 au 29 novembre : soutenance de projet
 
 Fonctionnalités:
--Création d'un arbre N-aire
+-Création d'un arbre N-aire de manière optimisé
 -Choix du 'meilleur' parcours pour la phase
 -Mise à jour de la localisation de MARC après une phase
 -Test d'arrivée sur la station de base
@@ -26,6 +26,8 @@ Fonctionnalités:
 -Utilisation d'un fichier de carte quelconque
 -Tirage au hasard de mouvements pour une phase
 -Prise en compte des types de terrain pour les mouvements
+-Création de map aléatoire
+
 
 Soumission de projet:
 - La livraison finale s'effectue sur Moodle sous la forme d'un .zip
